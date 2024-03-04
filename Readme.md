@@ -48,13 +48,14 @@ terraform plan -var-file terraform.tfvars
 terraform apply -var-file terraform.tfvars 
 aws configure
 aws eks update-kubeconfig --region us-east-1 --name myapp-eks-cluster
- kubectl get nodes
+kubectl get nodes
 cd kubernetes/
 kubectl apply -f config.yaml 
 k get pods
 kubectl get svc
 helm repo add hashicorp https://helm.releases.hashicorp.com
-helm install eks hashicorp/consul --version 1.0.0 --values consul-values.yaml --set global.datacenter=eks --namespace satya --create-namespace kubectl delete -f config.yaml 
+helm install eks hashicorp/consul --version 1.0.0 --values consul-values.yaml --set global.datacenter=eks --namespace satya --create-namespace 
+kubectl delete -f config.yaml 
 kubectl apply -f config-consul.yaml 
 k get pods
 cd terraform/
